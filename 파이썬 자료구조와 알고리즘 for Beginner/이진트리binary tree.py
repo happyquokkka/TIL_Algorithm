@@ -1,0 +1,84 @@
+# 트리 구조
+# 회사 사장을 필두로 그 아래 직책들이 구성되어 있는 조직표 or 컴퓨터의 상위 폴더 안에 하위 폴더들이 계속 이어져 있는 구조
+# 트리 자료구조 : 나무를 거꾸로 뒤집어 놓은 형태
+
+# 이진 트리 : 모든 노드의 자식이 최대 2개인 트리(자식이 2개 이하로 구성)
+# 이진 트리의 종류
+# 포화 이진 트리, 완전 이진 트리, 평향 이진 트리
+
+# 이진 트리 생성
+class TreeNode() :
+    def __init__ (self) :
+        self.left = None
+        self.data = None
+        self.right = None
+
+node1 = TreeNode()
+node1.data = "화사"
+
+node2 = TreeNode()
+node2.data = "솔라"
+node1.left = node2
+
+node3 = TreeNode()
+node3.data = "문별"
+node1.right = node3
+
+node4 = TreeNode()
+node4.data = "휘인"
+node2.left = node4
+
+node5 = TreeNode()
+node5.data = "쯔위"
+node2.right = node5
+
+node6 = TreeNode()
+node6.data = "선미"
+node3.left = node6
+
+print(node1.data, end=' ')
+print()
+print(node1.left.data, node1.right.data, end=' ')
+print()
+print(node1.left.left.data, node1.left.right.data, node1.right.left.data)
+print("---------------")
+
+# 이진 트리의 순회
+# 순회(traversal) : 이진 트리의 노드 전체를 한 번씩 방문하는 것
+# 노드 데이터를 처리하는 순서에 따라 '전위 순회', '중위 순회', '후위 순회'로 분류
+
+# 전위 순회 : 현재 노드 데이터 처리 -> 왼쪽 서브 트리로 이동 -> 오른쪽 서브 트리로 이동
+# 중위 순회 : 왼쪽 서브 트리로 이동 -> 현재 노드 데이터 처리 -> 오른쪽 서브 트리로 이동
+# 후위 순회 : 왼쪽 서브 트리로 이동 -> 오른쪽 서브 트리로 이동 -> 현재 노드 데이터 처리
+
+# 이진 트리 순회 구현
+def preorder(node) :
+    if node == None :
+        return
+    print(node.data, end = '->')
+    preorder(node.left)
+    preorder(node.right)
+
+def inorder(node) :
+    if node == None :
+        return
+    inorder(node.left)
+    print(node.data, end = '->')
+    inorder(node.right)
+
+def postorder(node) :
+    if node == None :
+        return
+    postorder(node.left)
+    postorder(node.right)
+    print(node.data, end = '->')
+
+print('전위 순회 :', end=' ')
+preorder(node1)
+print('끝')
+print('중위 순회 :', end=' ')
+inorder(node1)
+print('끝')
+print('후위 순회 :', end=' ')
+postorder(node1)
+print('끝')
