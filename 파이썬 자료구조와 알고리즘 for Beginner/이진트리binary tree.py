@@ -82,3 +82,45 @@ print('끝')
 print('후위 순회 :', end=' ')
 postorder(node1)
 print('끝')
+print('--------------------------------------')
+
+
+# 이진 트리의 일반 구현
+## 함수 선언부
+class TreeNode() :
+    def __init__ (self) :
+        self.left = None
+        self.data = None
+        self.right = None
+
+
+## 전역변수 선언부
+memory = []
+root = None
+nameAry = ['블랙핑크', '레드벨벳', '마마무', '에이핑크', '걸스데이', '트와이스']
+
+## 메인
+node = TreeNode()
+node.data = nameAry[0]
+root = node
+memory.append(node)
+
+for name in nameAry[1:] :
+    node = TreeNode() # 노드 생성
+    node.data = name # 노드에 데이터 입력
+    current = root # 루트 노드를 현재 작업중인 노드로 설정
+    while True : #무한반복
+        if name < current.data : # 새로 생성한 노드가 현재 작업중인 노드의 데이터보다 값이 작다면
+            if current.left == None : # 위의 조건을 만족하며, 현재 작업중인 노드의 왼쪽 링크가 비어있다면
+                current.left = node
+                break
+            current = current.left # 새로 생성한 노드가 현재 작업중인 노드의 데이터보다 값이 작고, 현재 작업중인 노드의 왼쪽 링크가 비어있지 않은 경우
+                                   # 현재 작업중인 노드를 그 노드의 왼쪽에 링크된 노드로 변경
+        else :
+            if current.right == None :
+                current.right = node
+                break
+            current = current.right
+    memory.append(node)
+
+print("이진 탐색 트리 구성 완료!")
