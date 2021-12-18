@@ -86,6 +86,7 @@ print('--------------------------------------')
 
 
 # 이진 트리의 일반 구현
+
 ## 함수 선언부
 class TreeNode() :
     def __init__ (self) :
@@ -124,3 +125,105 @@ for name in nameAry[1:] :
     memory.append(node)
 
 print("이진 탐색 트리 구성 완료!")
+
+# 이진 탐색 트리의 검색 작동
+## 함수 선언부
+class TreeNode() :
+    def __init__ (self) :
+        self.left = None
+        self.data = None
+        self.right = None
+
+
+## 전역변수 선언부
+memory = []
+root = None
+nameAry = ['블랙핑크', '레드벨벳', '마마무', '에이핑크', '걸스데이', '트와이스']
+
+## 메인
+
+node = TreeNode()
+node.data = nameAry[0]
+root = node
+memory.append(node)
+
+for name in nameAry[1:] :
+    node = TreeNode()
+    node.data = name
+    current = root
+    while True :
+        if name < current.data :
+            if current.left == None :
+                current.left = node
+                break
+            current = current.left
+        else :
+            if current.right == None :
+                current.right = node
+                break
+            current = current.right
+
+memory.append(node)
+
+# 이하는 이진 탐색 트리 검색 작동
+findName = '마마무'
+
+current = root
+while True :
+    if findName == current.data :
+        print(findName, "을(를) 찾음")
+        break
+    elif findName < current.data :
+        if current.left == None :
+            print(findName, '이(가) 트리에 없음')
+            break
+        current = current.left
+    else :
+        if current.right == None :
+            print(findName, '이(가) 트리에 없음')
+            break
+        current = current.right
+
+
+# 이진 탐색 트리에서 데이터 삭제
+# 1. 리프 노드(맨 아래쪽 노드)를 삭제하는 경우
+
+## 함수 선언부
+class TreeNode() :
+    def __init__ (self) :
+        self.left == None
+        self.data == None
+        self.right == None
+
+## 전역변수 선언부
+memory = []
+root = None
+nameAry = ['블랙핑크', '레드벨벳', '마마무', '에이핑크', '걸스데이', '트와이스']
+
+## 메인
+node = TreeNode()
+node.data = nameAry[0]
+root = node
+memory.append(node)
+
+for name in nameAry[1:] :
+    node = TreeNode()
+    node.data = name
+    current = root
+    while True :
+        if name < current.data :
+            if current.left == None :
+                current.left = node
+                break
+            current = current.left
+        else :
+            if current.right == None :
+                current.right = node
+                break
+            current = current.right
+
+# 이하는 이진 탐색 트리에서 데이터를 삭제하는 작동
+
+
+
+# 2. 자식 노드가 하나 있는 노드를 삭제하는 경우
